@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import SprintList from '../SprintList';
 
 class App extends Component {
   render() {
     return (
       <div>
-        hello world
+        <SprintList />
       </div>
     );
   }
