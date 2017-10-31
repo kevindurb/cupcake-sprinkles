@@ -1,2 +1,6 @@
 import Component from './component';
-export default Component;
+import injectSheet from './styles';
+
+export default injectSheet(
+  Component
+);
