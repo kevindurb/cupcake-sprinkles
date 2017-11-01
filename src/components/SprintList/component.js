@@ -8,6 +8,7 @@ class SprintList extends Component {
   static propTypes = {
     onLoad: PropTypes.func,
     sprintsIds: PropTypes.arrayOf(PropTypes.string),
+    classes: PropTypes.object,
   };
 
   static defaultProps = {
@@ -24,8 +25,10 @@ class SprintList extends Component {
   )
 
   render() {
+    const classes = this.props.classes || {};
+
     return (
-      <div>
+      <div className={classes.list}>
         {this.props.sprintsIds.map(this.renderItem)}
       </div>
     );
