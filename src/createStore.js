@@ -2,7 +2,7 @@ import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import createRouter from './createRouter';
 import appReducers from './ducks';
-import * as callApi from './callApi';
+import callApi from './callApi';
 
 const router = createRouter();
 
