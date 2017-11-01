@@ -20,6 +20,28 @@ class SprintList extends Component {
     sprint: {},
   };
 
+  renderTime() {
+    const start = this.props.sprint.start;
+    const end = this.props.sprint.end;
+    const classes = this.props.classes || {};
+
+    if (!start) {
+      return (
+        <div className={classes.time}>
+          Not Started
+        </div>
+      );
+    }
+    return [
+      <div className={classes.time}>
+        {formatSprintDate(this.props.sprint.start)}
+      </div>,
+      <div className={classes.time}>
+        {formatSprintDate(this.props.sprint.end)}
+      </div>
+    ];
+  }
+
   render() {
     const classes = this.props.classes || {};
     return (
@@ -27,13 +49,8 @@ class SprintList extends Component {
         <div className={classes.name}>
           {this.props.sprint.name}
         </div>
-        <div className={classes.time}>
-          <div className={classes.start}>
-            {formatSprintDate(this.props.sprint.start)}
-          </div>
-          <div className={classes.end}>
-            {formatSprintDate(this.props.sprint.end)}
-          </div>
+        <div className={classes.timeContainer}>
+          {this.renderTime()}
         </div>
       </div>
     );
