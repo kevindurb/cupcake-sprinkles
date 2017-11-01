@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
-import * as sprintsSelectors from '../../selectors/sprints';
-import * as sprintsActions from '../../ducks/sprints';
+import * as sprintsSagas from '../../sagas/sprints';
 
 const mapState = () => {
   return (state, props) => ({
   });
 };
 
-const mapDispatch = (dispatch, props) => ({
-});
+const mapDispatch = {
+  onCreateNew: sprintsSagas.addNew
+};
 
 export default connect(mapState, mapDispatch);
