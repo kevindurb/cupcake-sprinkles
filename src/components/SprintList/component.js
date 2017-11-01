@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import * as R from 'ramda';
 
 import SprintListItem from '../SprintListItem';
+import SprintToolbar from '../SprintToolbar';
 
 class SprintList extends Component {
   static propTypes = {
@@ -21,7 +22,7 @@ class SprintList extends Component {
   }
 
   renderItem = (id) => (
-    <SprintListItem id={id} />
+    <SprintListItem key={id} id={id} />
   )
 
   render() {
@@ -29,6 +30,7 @@ class SprintList extends Component {
 
     return (
       <div className={classes.list}>
+        <SprintToolbar />
         {this.props.sprintsIds.map(this.renderItem)}
       </div>
     );
