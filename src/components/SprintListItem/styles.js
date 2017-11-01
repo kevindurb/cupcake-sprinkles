@@ -14,4 +14,7 @@ export default injectSheet({
   time: {
     display: 'inline-block',
   },
+  selected: {
+    borderRight: '3px solid cornflowerblue',
+  },
 });

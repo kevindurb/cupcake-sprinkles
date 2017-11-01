@@ -22,3 +22,10 @@ export const makeSprintFromIdSelector = () => createSelector(
   (sprintsDomain, id) =>
     sprintsDomain.all[id]
 );
+
+export const makeIdIsSelectedSelector = () => createSelector(
+  makeSprintsDomainSelector(),
+  makeIdSelector(),
+  (sprintsDomain, id) =>
+    sprintsDomain.selected === id
+);

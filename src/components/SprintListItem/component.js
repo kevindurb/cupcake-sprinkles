@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as R from 'ramda';
 import moment from 'moment';
+import classnames from 'classnames';
 
 const formatSprintDate = date =>
   moment(date).format('ll');
@@ -14,10 +16,14 @@ class SprintList extends Component {
       end: PropTypes.string,
     }),
     classes: PropTypes.object,
+    onSelect: PropTypes.func,
+    selected: PropTypes.bool,
   };
 
   static defaultProps = {
     sprint: {},
+    onSelect: R.identity,
+    selected: false,
   };
 
   renderTime() {
@@ -44,8 +50,16 @@ class SprintList extends Component {
 
   render() {
     const classes = this.props.classes || {};
+    const itemClasses = classnames(
+      classes.item,
+      { [classes.selected]: this.props.selected },
+    );
+
     return (
-      <div className={classes.item}>
+      <div
+        className={itemClasses}
+        onClick={this.props.onSelect}
+      >
         <div className={classes.name}>
           {this.props.sprint.name}
         </div>
