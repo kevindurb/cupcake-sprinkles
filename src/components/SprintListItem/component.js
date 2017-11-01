@@ -34,10 +34,10 @@ class SprintList extends Component {
     }
     return [
       <div className={classes.time}>
-        {formatSprintDate(this.props.sprint.start)}
+        {formatSprintDate(start)}
       </div>,
       <div className={classes.time}>
-        {formatSprintDate(this.props.sprint.end)}
+        {formatSprintDate(end)}
       </div>
     ];
   }
