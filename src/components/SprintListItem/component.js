@@ -38,11 +38,12 @@ class SprintList extends Component {
         </div>
       );
     }
+
     return [
-      <div className={classes.time}>
+      <div key="start" className={classes.time}>
         {formatSprintDate(start)}
       </div>,
-      <div className={classes.time}>
+      <div key="end" className={classes.time}>
         {formatSprintDate(end)}
       </div>
     ];
