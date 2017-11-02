@@ -7,6 +7,7 @@ import moment from 'moment';
 
 import EditableHeader from '../EditableHeader';
 import EditingBanner from '../EditingBanner';
+import GoalList from '../GoalList';
 
 const formatDate = (date) => !!date ? date.toISOString() : null;
 
@@ -91,6 +92,16 @@ class SprintDashboard extends Component {
     return null;
   }
 
+  renderGoalList() {
+    const sprintId = this.props.sprint.id;
+    if (sprintId && sprintId !== 'new') {
+      return (
+        <GoalList sprintId={sprintId} />
+      );
+    }
+    return null;
+  }
+
   render() {
     const classes = this.props.classes || {};
 
@@ -116,6 +127,7 @@ class SprintDashboard extends Component {
             />
           </div>
         </div>
+        {this.renderGoalList()}
       </div>
     );
   }
