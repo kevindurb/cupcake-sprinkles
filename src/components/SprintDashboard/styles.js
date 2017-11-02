@@ -13,8 +13,13 @@ export default injectSheet({
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   headerContainer: {
-    width: 'calc(100% - 350px)'
+    width: 'calc(100% - 350px)',
+    minWidth: '200px',
+  },
+  dateContainer: {
+    minWidth: '336px',
   }
 });
