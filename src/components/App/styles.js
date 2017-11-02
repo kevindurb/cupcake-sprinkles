@@ -13,5 +13,11 @@ export default injectSheet({
     'input, button, optgroup, select, textarea': {
       fontFamily: 'Roboto',
     },
+    'html, body': {
+      boxSizing: 'border-box',
+    },
+    'body *, body *:before, body *:after': {
+      boxSizing: 'inherit',
+    },
   },
 });

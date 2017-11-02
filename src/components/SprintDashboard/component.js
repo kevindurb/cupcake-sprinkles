@@ -2,9 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 import update from 'immutability-helper';
+import { DateRangePicker } from 'react-dates';
+import moment from 'moment';
 
 import EditableHeader from '../EditableHeader';
 import EditingBanner from '../EditingBanner';
+
+const formatDate = (date) => !!date ? date.toISOString() : null;
 
 class SprintDashboard extends Component {
   static propTypes = {
@@ -29,6 +33,7 @@ class SprintDashboard extends Component {
     this.state = {
       changed: false,
       sprint: props.sprint || {},
+      focusedInput: null,
     }
   }
 
@@ -53,10 +58,26 @@ class SprintDashboard extends Component {
   ));
 
   onHeaderChange = (value) => this.updateSprintProp('name', value);
+  onDatesChange = ({ startDate, endDate }) => {
+    this.updateSprintProp('start', formatDate(startDate));
+    this.updateSprintProp('end', formatDate(endDate));
+  }
 
   onSave = () => {
     this.props.onSaveNew(this.state.sprint);
   }
+
+  getStartDate = () => (
+    !!this.state.sprint.start
+    ? moment(this.state.sprint.start)
+    : null
+  )
+
+  getEndDate = () => (
+    !!this.state.sprint.end
+    ? moment(this.state.sprint.end)
+    : null
+  )
 
   renderEditingHeader() {
     if (this.state.changed) {
@@ -79,6 +100,15 @@ class SprintDashboard extends Component {
         <EditableHeader
           text={this.state.sprint.name}
           onChange={this.onHeaderChange}
+        />
+        <DateRangePicker
+          startDate={this.getStartDate()}
+          endDate={this.getEndDate()}
+          onDatesChange={this.onDatesChange}
+          focusedInput={this.state.focusedInput}
+          onFocusChange={focusedInput => this.setState({ focusedInput })}
+          isOutsideRange={R.always(false)}
+          showClearDates
         />
       </div>
     );
