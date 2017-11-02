@@ -2,6 +2,7 @@ import { createSelector } from 'reselect';
 import * as R from 'ramda';
 
 export const makeSprintsDomainSelector = () => R.prop('sprints');
+export const makeLocationDomainSelector = () => R.prop('location');
 export const makeIdSelector = () => (state, props) => props.id;
 
 export const makeAllSprintsSelector = () => createSelector(
@@ -24,9 +25,9 @@ export const makeSprintFromIdSelector = () => createSelector(
 );
 
 export const makeSelectedIdSelector = () => createSelector(
-  makeSprintsDomainSelector(),
-  (sprintsDomain) =>
-    sprintsDomain.selected
+  makeLocationDomainSelector(),
+  (locationDomain) =>
+    locationDomain.payload.id
 );
 
 export const makeSelectedSprintSelector = () => createSelector(

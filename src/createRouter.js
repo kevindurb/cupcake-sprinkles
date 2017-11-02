@@ -1,10 +1,6 @@
 import { connectRoutes } from 'redux-first-router';
 import createHistory from 'history/createBrowserHistory';
-import * as constants from './ducks/location';
-
-const routes = {
-  [constants.HOME]: '/',
-};
+import routes from './ducks/location';
 
 export default () => {
   const history = createHistory();

@@ -1,6 +1,7 @@
 import { normalize } from 'normalizr';
 import * as sprintApi from '../api/sprints';
 import * as sprintActions from '../ducks/sprints';
+import * as locationActions from '../ducks/location';
 import sprintSchema from '../schemas/sprint';
 
 const newSprint = {
@@ -17,8 +18,7 @@ async (dispatch, getState, callApi) => {
 
 export const addNew = () =>
 async (dispatch, getState, callApi) => {
-  console.log('NEW');
   const data = normalize(newSprint, sprintSchema);
   dispatch(sprintActions.merge(data.entities.sprints));
-  dispatch(sprintActions.select('new'));
+  dispatch(locationActions.sprint({ id: 'new' }));
 };

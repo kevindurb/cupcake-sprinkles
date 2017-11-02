@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import * as sprintsSelectors from '../../selectors/sprints';
-import * as sprintsActions from '../../ducks/sprints';
+import * as locationActions from '../../ducks/location';
 
 const mapState = () => {
   const sprint = sprintsSelectors.makeSprintFromIdSelector();
@@ -14,7 +14,7 @@ const mapState = () => {
 
 const mapDispatch = (dispatch, props) => ({
   onSelect() {
-    dispatch(sprintsActions.select(props.id));
+    dispatch(locationActions.sprint({ id: props.id }));
   }
 });
 

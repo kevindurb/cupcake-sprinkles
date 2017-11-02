@@ -1,9 +1,16 @@
 import { createAction } from 'redux-actions';
 export const HOME = '@@currentLocation/HOME';
-export const ADMIN_HOME = '@@currentLocation/ADMIN_HOME';
-export const ADMIN_POSTS = '@@currentLocation/ADMIN_POSTS';
-export const ADMIN_POST_EDIT = '@@currentLocation/ADMIN_POST_EDIT';
+export const SPRINT = '@@currentLocation/SPRINT';
+export const SPRINT_LIST = '@@currentLocation/SPRINT_LIST';
 
 export const home = createAction(HOME);
-export const adminHome = createAction(ADMIN_HOME);
-export const adminPosts = createAction(ADMIN_POSTS);
+export const sprint = createAction(SPRINT);
+export const sprintList = createAction(SPRINT_LIST);
+
+const redirectTo = action => dispatch => dispatch(action);
+
+export default {
+  [HOME]: { path: '/', thunk: redirectTo(sprintList()) },
+  [SPRINT]: '/sprints/:id',
+  [SPRINT_LIST]: '/sprints',
+};
