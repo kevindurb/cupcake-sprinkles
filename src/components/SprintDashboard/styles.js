@@ -9,6 +9,12 @@ export default injectSheet({
     bottom: 0,
     padding: '0 24px',
   },
-  name: {
+  top: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
+  headerContainer: {
+    width: 'calc(100% - 350px)'
+  }
 });

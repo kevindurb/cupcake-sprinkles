@@ -97,19 +97,25 @@ class SprintDashboard extends Component {
     return (
       <div className={classes.dashboard}>
         {this.renderEditingHeader()}
-        <EditableHeader
-          text={this.state.sprint.name}
-          onChange={this.onHeaderChange}
-        />
-        <DateRangePicker
-          startDate={this.getStartDate()}
-          endDate={this.getEndDate()}
-          onDatesChange={this.onDatesChange}
-          focusedInput={this.state.focusedInput}
-          onFocusChange={focusedInput => this.setState({ focusedInput })}
-          isOutsideRange={R.always(false)}
-          showClearDates
-        />
+        <div className={classes.top}>
+          <div className={classes.headerContainer}>
+            <EditableHeader
+              text={this.state.sprint.name}
+              onChange={this.onHeaderChange}
+            />
+          </div>
+          <div className={classes.dateContainer}>
+            <DateRangePicker
+              startDate={this.getStartDate()}
+              endDate={this.getEndDate()}
+              onDatesChange={this.onDatesChange}
+              focusedInput={this.state.focusedInput}
+              onFocusChange={focusedInput => this.setState({ focusedInput })}
+              isOutsideRange={R.always(false)}
+              showClearDates
+            />
+          </div>
+        </div>
       </div>
     );
   }

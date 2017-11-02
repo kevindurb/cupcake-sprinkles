@@ -10,4 +10,7 @@ export default injectSheet({
     padding: '0 24px',
     justifyContent: 'space-between',
   },
+  save: {
+    marginLeft: '16px',
+  }
 });

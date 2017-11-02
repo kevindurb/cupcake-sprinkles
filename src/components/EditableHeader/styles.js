@@ -7,6 +7,10 @@ export default injectSheet({
     lineHeight: '36px',
     padding: '0',
     fontWeight: 'bold',
+    width: '100%',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
   },
   input: {
     fontSize: '32px',
@@ -15,5 +19,6 @@ export default injectSheet({
     padding: '0',
     fontWeight: 'bold',
     border: 'none',
+    width: '100%',
   },
 });

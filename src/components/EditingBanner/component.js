@@ -21,8 +21,13 @@ class EditingBanner extends Component {
       <div className={classes.banner}>
         <div>You have made changes!</div>
         <div>
-          <button>Undo</button>
-          <button onClick={this.props.onSave}>Save</button>
+          <button
+            className={classes.undo}
+          >Undo</button>
+          <button
+            className={classes.save}
+            onClick={this.props.onSave}
+          >Save</button>
         </div>
       </div>
     );
