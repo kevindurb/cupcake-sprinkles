@@ -80,7 +80,7 @@ class SprintDashboard extends Component {
   )
 
   renderEditingHeader() {
-    if (this.state.changed) {
+    if (this.state.changed || this.props.sprint.id === 'new') {
       return (
         <EditingBanner
           onSave={this.onSave}

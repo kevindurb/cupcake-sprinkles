@@ -43,3 +43,9 @@ export const makeIdIsSelectedSelector = () => createSelector(
   (selected, id) =>
     selected === id
 );
+
+export const makeHasNewSprintSelector = () => createSelector(
+  makeSprintsDomainSelector(),
+  (sprintsDomain) =>
+    !!sprintsDomain.all.new
+);

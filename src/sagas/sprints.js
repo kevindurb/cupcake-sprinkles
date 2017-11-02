@@ -4,6 +4,7 @@ import * as sprintApi from '../api/sprints';
 import * as sprintActions from '../ducks/sprints';
 import * as locationActions from '../ducks/location';
 import sprintSchema from '../schemas/sprint';
+import * as sprintSelectors from '../selectors/sprints';
 
 const omitId = R.omit(['id']);
 
@@ -21,8 +22,11 @@ async (dispatch, getState, callApi) => {
 
 export const addNew = () =>
 async (dispatch, getState, callApi) => {
-  const data = normalize(newSprint, sprintSchema);
-  dispatch(sprintActions.merge(data.entities.sprints));
+  const hasNewSprint = sprintSelectors.makeHasNewSprintSelector()(getState());
+  if (!hasNewSprint) {
+    const data = normalize(newSprint, sprintSchema);
+    dispatch(sprintActions.merge(data.entities.sprints));
+  }
   dispatch(locationActions.sprint({ id: 'new' }));
 };
 
