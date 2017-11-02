@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import * as R from 'ramda';
 import update from 'immutability-helper';
 
 import EditableHeader from '../EditableHeader';
@@ -14,10 +15,12 @@ class SprintDashboard extends Component {
       end: PropTypes.string,
     }),
     classes: PropTypes.object,
+    onSaveNew: PropTypes.func,
   };
 
   static defaultProps = {
     sprint: {},
+    onSaveNew: R.identity,
   };
 
   constructor(props) {
@@ -51,10 +54,16 @@ class SprintDashboard extends Component {
 
   onHeaderChange = (value) => this.updateSprintProp('name', value);
 
+  onSave = () => {
+    this.props.onSaveNew(this.state.sprint);
+  }
+
   renderEditingHeader() {
     if (this.state.changed) {
       return (
-        <EditingBanner />
+        <EditingBanner
+          onSave={this.onSave}
+        />
       );
     }
 
