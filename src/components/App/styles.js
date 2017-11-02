@@ -10,5 +10,8 @@ export default injectSheet({
       bottom: 0,
       fontFamily: 'Roboto',
     },
+    'input, button, optgroup, select, textarea': {
+      fontFamily: 'Roboto',
+    },
   },
 });

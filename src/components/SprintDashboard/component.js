@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
-import moment from 'moment';
-import classnames from 'classnames';
 
-const formatSprintDate = date =>
-  moment(date).format('ll');
+import EditableHeader from '../EditableHeader';
 
 class SprintList extends Component {
   static propTypes = {
@@ -26,6 +23,20 @@ class SprintList extends Component {
     selected: false,
   };
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: props.sprint || {},
+    }
+  }
+
+  componentWillReceiveProps(next) {
+    if (this.props.sprint !== next.sprint) {
+      this.setState({ data: next.sprint });
+    }
+  }
+
   render() {
     const classes = this.props.classes || {};
 
@@ -34,9 +45,7 @@ class SprintList extends Component {
         className={classes.dashboard}
         onClick={this.props.onSelect}
       >
-        <h1 className={classes.name}>
-          {this.props.sprint.name}
-        </h1>
+        <EditableHeader text={this.state.data.name} />
       </div>
     );
   }
